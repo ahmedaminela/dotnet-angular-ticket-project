@@ -1,0 +1,25 @@
+<h2>{{ ticket.id ? 'Edit Ticket' : 'Create Ticket' }}</h2>
+<form (ngSubmit)="save()" class="form-container" #ticketForm="ngForm">
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Description</mat-label>
+    <input matInput type="text" id="description" [(ngModel)]="ticket.description" name="description" required>
+    <mat-error *ngIf="ticketForm.controls['description']?.invalid && ticketForm.controls['description']?.touched">
+      Description is required.
+    </mat-error>
+    
+    
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Status</mat-label>
+    <mat-select [(ngModel)]="ticket.status" name="status">
+      <mat-option value="Open">Open</mat-option>
+      <mat-option value="Closed">Closed</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="form-actions">
+    <button mat-raised-button color="primary" type="submit" [disabled]="ticketForm.invalid">Save</button>
+    <button mat-raised-button color="warn" type="button" (click)="onCancel()">Cancel</button>
+  </div>
+</form>

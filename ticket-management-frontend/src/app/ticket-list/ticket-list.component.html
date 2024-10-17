@@ -1,0 +1,33 @@
+<h2>Ticket List</h2>
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Date Created</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of tickets" [class.green-row]="ticket.status === 'Open'">
+        <td>{{ ticket.id }}</td>
+        <td>{{ ticket.description }}</td>
+        <td>
+          <span class="status-badge" [ngClass]="{'open-status': ticket.status === 'Open', 'closed-status': ticket.status === 'Closed'}">
+            {{ ticket.status }}
+          </span>
+        </td>
+        <td>{{ ticket.dateCreated | date }}</td>
+        <td>
+          <!-- Open the pop-out dialog for editing -->
+          <button class="btn-action btn-edit" (click)="openEditTicketDialog(ticket.id)">Edit</button>
+          <button class="btn-action btn-delete" (click)="deleteTicket(ticket.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Open the pop-out dialog for adding a new ticket -->
+  <button (click)="openAddTicketDialog()" class="btn-add">Add New Ticket</button>
+</div>
