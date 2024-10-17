@@ -13,7 +13,7 @@ Before you begin, ensure you have met the following requirements:
 - **SQL Server** installed and running
 
 1. **Clone the repository**:
-   git clone https://your-repo-url.git
+   git clone https://github.com/ahmedaminela/dotnet-angular-ticket-project.git
 
    --Backend Setup:
 
